@@ -1,7 +1,7 @@
-const fs = require("fs");
+import fs from "fs";
 
 class ProductManager {
-    #path;
+    #path = "./Products.json";
     constructor(path) {
         this.#path = path;
     }
@@ -99,8 +99,8 @@ class ProductManager {
 export default ProductManager;
 
 async function main(){
-const manager = new ProductManager("./Products.json");
-console.log(await manager.getProducts());  // Me muestra mi array vacio (Aun no cargue prodcutos)
+//const manager = new ProductManager("./Products.json");
+//console.log(await manager.getProducts());  // Me muestra mi array vacio (Aun no cargue prodcutos)
 //await manager.addProduct("producto prueba", "Este es un producto prueba", 200, "Sin Imagen", "abc123", 25);  // Cargo producto a mi array
 //await manager.addProduct("producto prueba", "Este es un producto prueba", 200, "Sin Imagen", "abc123", 25);  // Cargo producto con codigo repetido a mi array para mostrar error "Product with the same existing code"
 //await manager.addProduct("Manzana", "Esto es una Manzana", 100, "http//manzana.png", "codigo1", 10);  // Cargo producto a mi array
@@ -110,7 +110,7 @@ console.log(await manager.getProducts());  // Me muestra mi array vacio (Aun no 
 //const product = await manager.getProductById(1);  // Busco un producto con el ID 3
 //console.log(product); // muestro el producto buscado con ID
 //await manager.deleteProduct(3);  // Elimino el producto
-await manager.updateProduct(6, {id: 4,title: "Actualizado",description: "Actualizado",price: 11});  // Actualizo el producto
+//await manager.updateProduct(6, {id: 4,title: "Actualizado",description: "Actualizado",price: 11});  // Actualizo el producto
 }
 main();
 
