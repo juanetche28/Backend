@@ -1,0 +1,16 @@
+<div>
+  <p>Todo listo para trabajar con websockets</p>
+  <div>
+    <label for="chat-input">Ingrese texto aqui</label>
+    <input type="text" id="chat-input" name="chat-input" />
+    <button type="button" id="send-button"> Enviar </button>
+  </div>
+  <p id="input-message"></p>
+  <div id="chat-container">
+    <ul id="chat-messages"></ul>
+  </div>
+</div>
+{{! Por defecto, el servidor de socket.io expone
+código para el cliente en /socket.io/socket.io.js }}
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

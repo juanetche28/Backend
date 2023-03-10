@@ -1,38 +1,71 @@
 [
     {
         "id": 0,
-        "title": "producto prueba",
-        "description": "Este es un producto prueba",
+        "title": "Manzana",
+        "description": "Esto es una Manzana",
+        "code": "PROD01",
         "price": 200,
-        "thumbnail": "Sin Imagen",
-        "code": "abc123",
-        "stock": 25
+        "status": "true",
+        "stock": 25,
+        "category": "ofertas",
+        "thumbnail": [
+            "Sin Imagen",
+            "Sin Imagen2"
+        ]
     },
     {
         "id": 1,
-        "title": "Manzana",
-        "description": "Esto es una Manzana",
-        "price": 100,
-        "thumbnail": "http//manzana.png",
-        "code": "codigo1",
-        "stock": 10
+        "title": "Naranja",
+        "description": "Esto es una Naranja",
+        "code": "PROD02",
+        "price": 210,
+        "status": "true",
+        "stock": 30,
+        "category": "ofertas",
+        "thumbnail": [
+            "Sin Imagen"
+        ]
     },
     {
-        "id": 2,
-        "title": "Banana",
-        "description": "es una Banana",
-        "price": 50,
-        "thumbnail": "http://banana.png",
-        "code": "codigo2",
-        "stock": 5
+        "id": 7,
+        "title": "Durazno Actualizado",
+        "description": "Esto es un Durazno",
+        "code": "PROD03",
+        "price": 60,
+        "status": "true",
+        "stock": 50,
+        "category": "especiales",
+        "thumbnail": [
+            "Sin Imagen",
+            "Sin Imagen2_Actualizado"
+        ]
     },
     {
         "id": 3,
-        "title": "Pera",
-        "description": "es una pera",
-        "price": 30,
-        "thumbnail": "http://peras.png",
-        "code": "codigo3",
-        "stock": 15
+        "title": "Kiwi",
+        "description": "Esto es un Kiwi",
+        "code": "PROD06",
+        "price": 6000,
+        "status": "true",
+        "stock": 50,
+        "category": "especiales",
+        "thumbnail": [
+            "Sin Imagen",
+            "Sin Imagen2"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Durazno Actualizado",
+        "description": "Esto es un Durazno",
+        "code": "PROD03",
+        "price": 60,
+        "status": "true",
+        "stock": 50,
+        "category": "especiales",
+        "thumbnail": [
+            "Sin Imagen",
+            "Sin Imagen2_Actualizado"
+        ]
     }
 ]
