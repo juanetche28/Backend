@@ -24,9 +24,14 @@ socket.on("deletedStatus", (data) => {
 });
 
 socket.on("updatedProductsDeleted", (data) => {
+  
   const updatedProducts = document.getElementById("updatedProducts")
-  // updatedProducts.innerText = "";
-  updatedProducts.innerText = JSON.stringify(data);
+  updatedProducts.innerText = "";
+  data["productDeleted"].forEach((row) => {
+    const li = document.createElement("li");
+    li.innerText = `${row.id}: ${row.title}`;
+    updatedProducts.appendChild(li);
+  })
 });
 
 
@@ -39,12 +44,10 @@ socket.on("AddedStatus", (data) => {
 socket.on("updatedProductsAdded", (data) => {
   const updatedProducts = document.getElementById("updatedProducts")
   updatedProducts.innerText = "";
-  updatedProducts.innerText = JSON.stringify(data);
+  data["productAdded"].forEach((row) => {
+    const li = document.createElement("li");
+    li.innerText = `${row.id}: ${row.title}`;
+    updatedProducts.appendChild(li);
+  })
 });
 
-//   for (const el of data) {
-//     const li = document.createElement("li");
-//     li.innerText = `${el.socketId}: ${el.message}`;
-//     chatMessages.appendChild(li);
-//   }
-// });

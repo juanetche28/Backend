@@ -1,5 +1,4 @@
 import express, { urlencoded } from "express";
-import fs from "fs";
 import handlebars from "express-handlebars";
 import productsRouter from "./routes/products.router.js";
 import cartsRouter from "./routes/carts.router.js";
@@ -31,8 +30,6 @@ const httpServer = app.listen(8080, () => {
   console.log("Server listening on port 8080");
 });
 
-/** Creamos nuestro servidor de sockets utilizando nuestro servidor http */
-const socketServer = new Server(httpServer);
 
 // Crear una vista “index.handlebars” la cual contenga una lista de todos los productos agregados hasta el momento
 app.get("/", async (req, res) => {
@@ -43,18 +40,23 @@ app.get("/", async (req, res) => {
 
 // crear una vista “realTimeProducts.handlebars”, la cual vivirá en el endpoint “/realtimeproducts” en nuestro views router, ésta contendrá la misma lista de productos, sin embargo, ésta trabajará con websockets.
 
+//Al iniciar el servidor uso Handeblars para que me lo traiga cargado (Aproveche el paso anterior)
 app.get("/realTimeProducts", async (req, res) => {
   res.render("realTimeProducts", {products});
 });
+
+/** Creamos nuestro servidor de sockets utilizando nuestro servidor http */
+
+const socketServer = new Server(httpServer);
 
 socketServer.on("connection", (socket) => {
   console.log("New Client Connected!");
 
 // Leo el ID que desde el cliente enviaron para eliminar
   socket.on("inputIDdelete", async (data) => {
-    manager.deleteProduct(parseInt(data));
+    await manager.deleteProduct(parseInt(data));
     socket.emit("deletedStatus", `Product with ID ${data} deleted`);
-    const productDeleted = await manager.getProducts();
+    const productDeleted = await manager.getProducts(); // No esta actualizando correctamente
     socket.emit("updatedProductsDeleted", {productDeleted});
   });
   
@@ -62,7 +64,7 @@ socketServer.on("connection", (socket) => {
 //Leo el objeto producto nuevo a agregar a la lista
   socket.on("inputAddproduct", async (data) => {
     const newProduct = JSON.parse(data);
-    manager.addProduct(newProduct.title, newProduct.description, newProduct.code, newProduct.price, newProduct.status, newProduct.stock, newProduct.category, newProduct.thumbnail);
+    await manager.addProduct(newProduct.title, newProduct.description, newProduct.code, newProduct.price, newProduct.status, newProduct.stock, newProduct.category, newProduct.thumbnail);
     socket.emit("AddedStatus", `Product with CODE ${newProduct.code} succesfully Added`);
     const productAdded = await manager.getProducts();
     socket.emit("updatedProductsAdded", {productAdded});
