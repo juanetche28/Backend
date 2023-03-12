@@ -1,0 +1,41 @@
+<div>
+  <p id="pTitle">Lista de Productos - Vista en Tiempo Real</p>
+
+{{!-- formulario para que se ingrese el numero de id de producto a eliminar --}}
+
+<form action="" target="_blank">
+  <p>
+    Enter the ID of the product to delete: <input id="inputIDdelete" type="text">
+    <input id= "deleteButton" type="button" value="Delete">
+  </p>
+</form>
+
+<form action="" target="_blank">
+  <p>
+    Enter the product object to add to the list: <input id="inputAddproduct" type="text">
+    <input id="addButton" type="button" value="Add">
+  </p>
+</form>
+
+<P id="status"></P>
+
+  <div>
+    <ul id="ulProducts">
+        <div id="updatedProducts">
+            {{#each products}}
+            <li id="liProducts"> Product ID: {{id}}
+                <ul><label id="Black">Name: </label> {{title}}</ul>
+                <ul><label id="Black">Description: </label>{{description}}</ul>
+                <ul><label id="Black">Code: </label> {{code}}</ul>
+                <ul><label id="Black">Price: </label> {{price}}</ul>
+                <ul><label id="Black">Status: </label> {{status}}</ul>
+                <ul><label id="Black">Category: </label> {{category}}</ul>
+                <ul><label id="Black">Image: </label> {{thumbnail}}</ul>
+            </li>
+            {{/each}}
+        </div>
+    </ul>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/realTimeProducts.js"></script>

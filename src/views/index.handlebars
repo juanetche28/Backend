@@ -1,6 +1,23 @@
 <div>
-  <p>Todo listo para trabajar con websockets</p>
+  <p id="pTitle">Lista de Productos - Vista Estatica</p>
   <div>
+    <ul id="ulProducts"> 
+      {{#each products}}
+      <li id="liProducts"> Product ID: {{id}}
+        <ul><label id="Black">Name: </label> {{title}}</ul>
+        <ul><label id="Black">Description: </label>{{description}}</ul>
+        <ul><label id="Black">Code: </label> {{code}}</ul>
+        <ul><label id="Black">Price: </label> {{price}}</ul>
+        <ul><label id="Black">Status: </label> {{status}}</ul>
+        <ul><label id="Black">Category: </label> {{category}}</ul>
+        <ul><label id="Black">Image: </label> {{thumbnail}}</ul>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+
+
+  {{!-- <div>
     <label for="chat-input">Ingrese texto aqui</label>
     <input type="text" id="chat-input" name="chat-input" />
     <button type="button" id="send-button"> Enviar </button>
@@ -11,6 +28,5 @@
   </div>
 </div>
 {{! Por defecto, el servidor de socket.io expone
-código para el cliente en /socket.io/socket.io.js }}
+código para el cliente en /socket.io/socket.io.js }} --}}
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/index.js"></script>

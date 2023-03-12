@@ -1,6 +1,6 @@
 import { Router, json } from "express";
 import ProductManager from "../ProductManager.js";
-const manager = new ProductManager("./Products.json");
+const manager = new ProductManager("./src/Products.json");
 
 // Importo de mi base de datos "Products.json" los productos guardados
 const products = await manager.getProducts();
